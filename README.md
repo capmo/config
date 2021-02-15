@@ -6,7 +6,7 @@ Basic, extendable configuration for Product and Engineering team
 
 ## Overview
 
-This serves as a bsic configuration to standardise all our repositories. The styling makes use of the following technologies
+This serves as a basic configuration to standardise all our repositories. The styling makes use of the following technologies
 
   * [Prettier](https://prettier.io/) - For styling the code
   * [EditorConfig](https://editorconfig.org/) - To ensure all editors use the same rules
