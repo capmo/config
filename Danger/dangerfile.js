@@ -119,7 +119,7 @@ function checkForVersionUpdate() {
   }
 
   issues.push(`Please ensure the package version has been bumped in accordance with [Semantic Versioning](https://semver.org/)\n
-  and run 'npm i' to update package-lock\n`);
+  and run \`npm i\` to update \`package-lock.json`\n`);
 }
 
 async function dangerJs() {
