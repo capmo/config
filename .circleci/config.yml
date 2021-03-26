@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  deploy:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:12.18.3
+    steps:
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - deploy:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
