@@ -59,11 +59,17 @@ const getLabelIssues = (platform = "default") => {
       return text;
     }, '');
 
-    return `**This PR has no label(s)**\n\nPlease add one (or more) labels to give this PR a better visual context: ${labelsText}`;
+    return labelsText;
   }
 };
+
+const getIssueDescription = (parts) => {
+  // Creates a single-line-markdown-description from multiple description parts
+  return parts.reduce((acc, part) => `${acc}${part}`, '')
+}
 
 module.exports = {
   getRandomImage,
   getLabelIssues,
+  getIssueDescription,
 };
