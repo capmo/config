@@ -5,7 +5,7 @@ const {
 } = require('danger-plugin-toolbox');
 const { getRandomImage, getLabelIssues } = require('./helpers');
 const { imageStore } = require('./imageStore');
-  
+
 const issues = [];
 
 async function checkPRSize() {
@@ -36,9 +36,9 @@ async function checkPRSize() {
 }
 
 function checkTitlePrefix() {
-  const prefixes = ['[HOTFIX]', '[BUGFIX]', '[CHORE]', '[SETUP]', '[DEBUG]'];
+  const prefixes = ['[HOTFIX]', '[BUGFIX]', '[CHORE]', '[SETUP]', '[DEBUG]', '[BACK-PROPAGATION]'];
   const dependabotPrefix = 'Bump';
-  const regex = /\[[A-Z]+-\d+\].*/g; // e.g. [PD-1234]
+  const regex = /\[(PD|IES|QA)-\d+\].*/g; // e.g. [PD-1234]
 
   if (
     ![...prefixes, dependabotPrefix].some(prefix =>
@@ -47,7 +47,7 @@ function checkTitlePrefix() {
     !(danger.github.pr.title.match(regex) !== null)
   ) {
     issues.push(
-      `**Your PR title has not been prefixed properly**\n\nPlease use on of the following prefixes:\nPrimary:\n- \`[PD-XXXX]\` for a JIRA-ticket of the Daywalkers squad\n- \`[IES-XXXX]\` for a JIRA-ticket of the Internet Explorers squad\nSecondary:\n- \`[HOTFIX]\` for any time critical fixes\n- \`[CHORE]\` for any other tasks\n- \`[SETUP]\` for any setup-related\n- \`[DEBUG]\` for debugging purposes\nAutomatically:\n- \`Bump ...\` for dependabot (do not change this title)\n\n![img](${getRandomImage(
+      `**Your PR title has not been prefixed properly**\n\nPlease use on of the following prefixes:\nPrimary:\n- \`[PD-XXXX]\` for a JIRA-ticket of the Daywalkers squad\n- \`[IES-XXXX]\` for a JIRA-ticket of the Internet Explorers squad\nSecondary:\n- \`[HOTFIX]\` for any time critical fixes\n- \`[CHORE]\` for any other tasks\n- \`[SETUP]\` for any setup-related\n- \`[DEBUG]\` for debugging purposes\nAutomatically:\n- \`[BACK-PROPAGATION]\` for important changes which also required in other branches (do not change this title)\n- \`Bump ...\` for dependabot (do not change this title)\n\n![img](${getRandomImage(
         imageStore.wrongTitle
       )}, 'Oops')\n`
     );
@@ -55,7 +55,7 @@ function checkTitlePrefix() {
 }
 
 function checkJiraURL() {
-  const regex = /(https:\/\/capmo-team.atlassian.net\/browse\/)(PD|IES)-.*/g;
+  const regex = /(https:\/\/capmo-team.atlassian.net\/browse\/)(PD|IES|QA)-\d+/g;
 
   if (
     !!danger.github.pr.body.includes(
@@ -121,4 +121,3 @@ async function dangerJs(platform) {
 module.exports = {
   dangerJs
 };
-  
