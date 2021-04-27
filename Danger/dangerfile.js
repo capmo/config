@@ -71,7 +71,7 @@ function checkTitlePrefix() {
 }
 
 function checkJiraURL() {
-  const regex = /(https:\/\/capmo-team.atlassian.net\/browse\/)(PD|IES|QA)-\d+/g;
+  const regex = /(https:\/\/capmo-team.atlassian.net\/browse\/)(PD|pd|IES|ies|QA|qa)-\d+/g;
 
   if (
     !!danger.github.pr.body.includes(
