@@ -3,7 +3,7 @@ const {
   fileAddedLineNumbers,
   fileRemovedLineNumbers,
 } = require('danger-plugin-toolbox');
-const { getRandomImage, getLabelIssues, getIssueDescription } = require('./helpers');
+const { getRandomImage, getLabelIssues } = require('./helpers');
 const { imageStore } = require('./imageStore');
 
 const issues = [];
@@ -33,7 +33,7 @@ async function checkPRSize() {
       `![img](${getRandomImage(imageStore.bigPR)}, 'Oops')\n`
     ]
 
-    issues.push(getIssueDescription(markdownParts));
+    issues.push(markdownParts.join(''));
   }
 }
 
@@ -66,7 +66,7 @@ function checkTitlePrefix() {
       `![img](${getRandomImage(imageStore.wrongTitle)}, 'Oops')\n`
     ]
 
-    issues.push(getIssueDescription(markdownParts));
+    issues.push(markdownParts.join(''));
   }
 }
 
@@ -85,7 +85,7 @@ function checkJiraURL() {
       `![img](${getRandomImage(imageStore.noJiraTicket)}, 'Oops')\n`
     ]
 
-    issues.push(getIssueDescription(markdownParts));
+    issues.push(markdownParts.join(''));
   }
 }
 
@@ -98,7 +98,7 @@ function checkSummary() {
       `![img](${getRandomImage(imageStore.noSummary)}, 'Oops')\n`
     ]
 
-    issues.push(getIssueDescription(markdownParts));
+    issues.push(markdownParts.join(''));
   }
 }
 
@@ -109,7 +109,7 @@ function checkAssignments() {
       `![img](${getRandomImage(imageStore.noAssignee)}, 'Oops')\n`
     ]
 
-    issues.push(getIssueDescription(markdownParts));
+    issues.push(markdownParts.join(''));
   }
 }
 
@@ -123,7 +123,7 @@ function checkLabels(platform) {
       `![img](${getRandomImage(imageStore.noLabels)}, 'Oops')\n`
     ]
 
-    issues.push(getIssueDescription(markdownParts));
+    issues.push(markdownParts.join(''));
   }
 }
 

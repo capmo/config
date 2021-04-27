@@ -63,13 +63,7 @@ const getLabelIssues = (platform = "default") => {
   }
 };
 
-const getIssueDescription = (parts) => {
-  // Creates a single-line-markdown-description from multiple description parts
-  return parts.reduce((acc, part) => `${acc}${part}`, '')
-}
-
 module.exports = {
   getRandomImage,
   getLabelIssues,
-  getIssueDescription,
 };
