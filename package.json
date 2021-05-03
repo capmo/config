@@ -21,6 +21,10 @@
     "capmo",
     "config"
   ],
+  "peerDependencies": {
+    "danger": "10.6.4",
+    "danger-plugin-toolbox": "1.29.0"
+  },
   "author": "tech@capmo.de",
   "license": "ISC",
   "bugs": {
