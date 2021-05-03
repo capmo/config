@@ -1,4 +1,4 @@
-const prettier = {
+const prettierrc = {
   "semi": false,
   "trailingComma": "none",
   "singleQuote": true,
@@ -7,5 +7,5 @@ const prettier = {
 }
 
 module.exports = {
-  prettier
+  prettierrc
 }
