@@ -79,9 +79,10 @@ Add "extends": ["airbnb-typescript/base"] to the ESLint config File
 2. Create a dangerfile in the root of the repo with the following content:
 
 ```
-const { dangerJs } = require('@capmo/config/Danger/dangerfile');
+const { dangerJs } = require('@capmo/config');
+const options = { platform: 'backend' }
 
-dangerJs();
+dangerJs(options);
 ```
 
 The above-mentioned dangerfile is a general one which can be generally used in any regular code repository.
@@ -98,3 +99,10 @@ The above-mentioned dangerfile is a general one which can be generally used in a
   command: |
   npx danger ci
 ```
+
+### Possible options
+| Option            | Default | Type                          | Description                                                   |
+| :---------------- | :------ | :---------------------------- | :------------------------------------------------------------ |
+| platform          | N/A     | 'backend', 'webapp', 'mobile' | Used to specify the platform for labeling                     |
+| versionValidation | true    | Boolean                       | Determine whether or not we should check the package versions |
+| sizeLimit         | 1000    | Number                        | Maximum number of lines changes allowed                       |

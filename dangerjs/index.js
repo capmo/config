@@ -14,7 +14,7 @@ const { checkForVersionUpdate } = require('./version')
  * @param {boolean} options.versionValidation Indicate whether or not package version should be checked
  * @param {number} options.sizeLimit Change length for PRs Including additions and deletions
  */
-async function dangerJs({ platform, versionValidation, sizeLimit = 1000 }) {
+async function dangerJs({ platform, versionValidation = true, sizeLimit = 1000 }) {
   const { title, body, assignees } = danger.github.pr
   const { labels } = danger.github.issue
   const modifiedFiles = danger.git.modified_files
