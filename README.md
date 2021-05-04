@@ -25,7 +25,7 @@ Prettier
 Create a `.prettierrc.js` file in the root of the project with the following code
 
 ```
-const { prettierConfig } = require('@capmo/config/prettier');
+const { prettierConfig } = require('@capmo/config');
 
 module.exports = { ...prettierConfig };
 ```
