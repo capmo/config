@@ -6,12 +6,13 @@ const urlError = [
   `![img](${getRandomImage('noJiraTicket')}, 'Oops')\n`
 ]
 
-function checkTaskURL({ body = '' }) {
-  const storyUrlRegex = /(https:\/\/capmo-team.atlassian.net\/browse\/)(PD|pd|IES|ies|QA|qa)-\d+/g
-  const doesNotHaveUrl = !!body.includes(
-    'https://capmo-team.atlassian.net/browse/'
-  )
+const storyUrlRegex = /(https:\/\/capmo-team.atlassian.net\/browse\/)(PD|pd|IES|ies|QA|qa)-\d+/g
+const hasUrl = value => value.includes(
+  'https://capmo-team.atlassian.net/browse/'
+)
 
+function checkTaskURL({ body = '' }) {
+  const doesNotHaveUrl = !!hasUrl(body)
   const bodyUrlIsNotComplete = !(body.match(storyUrlRegex) !== null)
 
   if (doesNotHaveUrl && bodyUrlIsNotComplete) {

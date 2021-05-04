@@ -18,11 +18,11 @@ const titleError = [
   `![img](${getRandomImage('wrongTitle')}, 'Oops')\n`
 ]
 
-function checkTitlePrefix({ title = '' }) {
-  const genericPrefixes = ['[HOTFIX]', '[BUGFIX]', '[CHORE]', '[SETUP]', '[DEBUG]', '[BACK-PROPAGATION]']
-  const dependabotPrefix = 'Bump'
-  const teamSpecificPrefixes = /\[(PD|IES|QA)-\d+\].*/g // e.g. [PD-1234], [IES-1234], [QA-1234]
+const genericPrefixes = ['[HOTFIX]', '[BUGFIX]', '[CHORE]', '[SETUP]', '[DEBUG]', '[BACK-PROPAGATION]']
+const dependabotPrefix = 'Bump'
+const teamSpecificPrefixes = /\[(PD|IES|QA)-\d+\].*/g // e.g. [PD-1234], [IES-1234], [QA-1234]
 
+function checkTitlePrefix({ title = '' }) {
   if (!title.length) return titleError.join('')
 
   const includesGenericPrefix = [...genericPrefixes, dependabotPrefix].some(prefix => title.includes(prefix))

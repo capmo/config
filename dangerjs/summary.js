@@ -5,9 +5,9 @@ const summaryError = [
   `![img](${getRandomImage('noSummary')}, 'Oops')\n`
 ]
 
-function checkSummary({ body = '' }) {
-  const filledOutSummaryRegex = /.*(\*\*Summary\*\*\r\nTODO).*/g
+const filledOutSummaryRegex = /.*(\*\*Summary\*\*\r\nTODO).*/g
 
+function checkSummary({ body = '' }) {
   if(!body.length) return summaryError.join('')
 
   if (body.match(filledOutSummaryRegex) !== null) {
