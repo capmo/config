@@ -2,7 +2,7 @@ const { fail, danger } = require('danger')
 
 const { checkPRSize } = require('./size')
 const { checkTitlePrefix } = require('./title')
-const { checkTaskURL } = require('./checkTaskUrl')
+const { checkTaskURL } = require('./taskUrl')
 const { checkSummary } = require('./summary')
 const { checkAssignments } = require('./assignment')
 const { checkLabels } = require('./labels')
@@ -30,7 +30,9 @@ async function dangerJs({ platform, versionValidation = true, sizeLimit = 1000 }
   const issues = [size, title, url, summary, assignments, labels, checkVersion]
 
   issues.forEach(issue => {
-    if (issue) fail(issue)
+    if (issue) {
+      fail(issue)
+    }
   })
 }
 
