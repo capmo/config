@@ -1,10 +1,10 @@
-const { prettierrc } = require('./prettierrc')
-const { esLintrc } = require('./eslintrc')
+const { prettierConfig } = require('./prettierrc')
+const { eslintConfig } = require('./eslintrc')
 
 const prettier = {
-  prettierrc
+  prettierConfig
 }
 
 module.exports = {
-  prettier, esLintrc
+  prettier, eslintConfig
 }

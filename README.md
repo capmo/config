@@ -9,10 +9,10 @@ ESLint
 Create a new `.eslintrc.js` file in the root of the project
 
 ```
-const { esLintrc } = require('@capmo/config');
+const { eslintConfig } = require('@capmo/config');
 
 module.exports = {
- ...esLintrc
+ ...eslintConfig
 // --- Uncomment for projects without React
 // "extends": [ "airbnb-typescript/base" ]
 // --- Uncomment for projects with React
@@ -25,9 +25,9 @@ Prettier
 Create a `.prettierrc.js` file in the root of the project with the following code
 
 ```
-const { prettierrc } = require('@capmo/config/prettier');
+const { prettierConfig } = require('@capmo/config/prettier');
 
-module.exports = { ...prettierrc };
+module.exports = { ...prettierConfig };
 ```
 
 ## Overview

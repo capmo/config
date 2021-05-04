@@ -1,4 +1,4 @@
-const esLintrc = {
+const eslintConfig = {
 	"parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -50,5 +50,5 @@ const esLintrc = {
 }
 
 module.exports = {
-  esLintrc
+  eslintConfig
 }
