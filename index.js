@@ -1,5 +1,8 @@
-const { dangerJs } = require('./dangerjs');
+import { dangerJs } from './dangerjs'
+import { eslintConfig, prettierConfig }  from './lintingAndStyling'
 
 module.exports = {
-  dangerJs
+ eslintConfig,
+ prettierConfig,
+ dangerJs
 }
