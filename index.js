@@ -1,6 +1,6 @@
-import { eslintConfig, prettier }  from './linting_styling'
+import { eslintConfig, prettierConfig }  from './lintingAndStyling'
 
 module.exports = {
  eslintConfig,
- prettier
+ prettierConfig
 }
