@@ -32,8 +32,8 @@ jobs:
           draft: false
           prerelease: false
 
-  publish-gpr:
-    needs: build
+  release:
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
