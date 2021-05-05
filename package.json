@@ -21,7 +21,7 @@
     "capmo",
     "config"
   ],
-  "peerDependencies": {
+  "dependencies": {
     "danger": "10.6.4",
     "danger-plugin-toolbox": "1.29.0"
   },
