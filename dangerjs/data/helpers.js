@@ -55,7 +55,7 @@ const labelsPerPlatform = {
   ],
 }
 
-const getLabelIssues = (platform = "default") => {
+const getLabelIssues = (platform) => {
   if (labelsPerPlatform[platform]) {
     const labelsText = labelsPerPlatform[platform].reduce((text, label) => {
       text = text + `\n- \`${label}\`: ${pullRequestLabels[label]}`
