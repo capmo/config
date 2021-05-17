@@ -16,6 +16,11 @@ const { checkForVersionUpdate } = require('./version')
 async function dangerJs ({ platform = 'default', versionValidation = true, sizeLimit = 1000 }) {
   const { title: prTitle, body, assignees } = danger.github.pr
   const { labels: prLabels } = danger.github.issue
+  danger.git.modified_files.forEach(file =>
+    danger.git.structuredDiffForFile(file).then(diff => {
+      console.log(diff.chunks[0]);
+    })
+  );
   const diff  = await danger.git.diffForFile('package.json')
   console.log({diff})
   const size = await checkPRSize({ sizeLimit })
