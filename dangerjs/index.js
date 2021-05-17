@@ -14,8 +14,9 @@ const { checkForVersionUpdate } = require('./version')
  * @param {number} options.sizeLimit Change length for PRs Including additions and deletions
  */
 async function dangerJs ({ platform = 'default', versionValidation = true, sizeLimit = 1000 }) {
-  const { title: prTitle, body, assignees, diff } = danger.github.pr
+  const { title: prTitle, body, assignees } = danger.github.pr
   const { labels: prLabels } = danger.github.issue
+  const diff  = await danger.git.structuredDiffForFile('package.json')
   console.log({diff})
   const size = await checkPRSize({ sizeLimit })
   const title = checkTitlePrefix({ prTitle })
