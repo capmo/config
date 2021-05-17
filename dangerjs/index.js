@@ -16,10 +16,12 @@ const { checkForVersionUpdate } = require('./version')
 async function dangerJs ({ platform = 'default', versionValidation = true, sizeLimit = 1000 }) {
   const { title: prTitle, body, assignees } = danger.github.pr
   const { labels: prLabels } = danger.github.issue
-  danger.git.modified_files.forEach(file =>
+  danger.git.modified_files.forEach(file => {
+    console.log({file})
     danger.git.diffForFile(file).then(diff => {
       console.log(diff);
-    })
+    });
+  }
   );
   const diff  = await danger.git.diffForFile('package.json')
   console.log({diff})
