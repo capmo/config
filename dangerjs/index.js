@@ -17,7 +17,7 @@ async function dangerJs ({ platform = 'default', versionValidation = true, sizeL
   const { title: prTitle, body, assignees } = danger.github.pr
   const { labels: prLabels } = danger.github.issue
   const packageJsonDiff = await danger.git.diffForFile('package.json')
-  console.log(packageJsonDiff)
+
   const size = await checkPRSize({ sizeLimit })
   const title = checkTitlePrefix({ prTitle })
   const url = checkTaskURL({ body })
