@@ -1,6 +1,5 @@
 const versionNotBumpedError = [
-  'Please ensure the package version has been bumped in accordance with [Semantic Versioning](https://semver.org/)\n',
-  'and run `npm i` to update `package-lock.json`\n'
+  'Please ensure the package version has been bumped in accordance with [Semantic Versioning](https://semver.org/)'
 ]
 
 const PACKAGE_JSON_VERSION_PROP_QUERY = '"version": ';
