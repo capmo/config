@@ -8,7 +8,6 @@ const versionNotBumpedError = [
  */
 function checkForVersionUpdate ({ versionValidation, packageJsonDiff }) {
   if (!versionValidation) return
-  console.log(packageJsonDiff)
   if(packageJsonDiff.includes('"version": ')) return
 
   return versionNotBumpedError.join('')

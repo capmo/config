@@ -18,8 +18,8 @@ async function dangerJs ({ platform = 'default', versionValidation = true, sizeL
   const { labels: prLabels } = danger.github.issue
 
     danger.git.diffForFile('package.json').then(diff => {
-  
-      console.log({diff: diff.added});
+      const versionString = `"version": "`;
+      console.log({diff: diff.added.includes(versionString)});
     });
 
   const diff  = await danger.git.diffForFile('package.json')
