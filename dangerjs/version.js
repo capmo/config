@@ -8,7 +8,7 @@ const VERSION_QUERY = '"version":';
 function checkForVersionUpdate ({ versionValidation, packageJsonDiff }) {
   if (!versionValidation) return
 
-  if(packageJsonDiff && packageJsonDiff.includes(VERSION_QUERY)) return
+  if(packageJsonDiff && packageJsonDiff.added.includes(VERSION_QUERY)) return
 
   return versionNotBumpedError.join('')
 }
