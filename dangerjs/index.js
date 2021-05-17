@@ -17,8 +17,8 @@ async function dangerJs ({ platform = 'default', versionValidation = true, sizeL
   const { title: prTitle, body, assignees } = danger.github.pr
   const { labels: prLabels } = danger.github.issue
   danger.git.modified_files.forEach(file =>
-    danger.git.structuredDiffForFile(file).then(diff => {
-      console.log(diff.chunks);
+    danger.git.diffForFile(file).then(diff => {
+      console.log(diff);
     })
   );
   const diff  = await danger.git.diffForFile('package.json')
