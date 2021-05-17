@@ -3,12 +3,12 @@ const versionNotBumpedError = [
   'and run `npm i` to update `package-lock.json`\n'
 ]
 
-const DIFF_VERSION_QUERY = '"version": ';
+const PACKAGE_JSON_VERSION_PROP_QUERY = '"version": ';
 
 function checkForVersionUpdate ({ versionValidation, packageJsonDiff }) {
   if (!versionValidation) return
 
-  if(packageJsonDiff && packageJsonDiff.added.includes(DIFF_VERSION_QUERY)) return
+  if(packageJsonDiff && packageJsonDiff.added.includes(PACKAGE_JSON_VERSION_PROP_QUERY)) return
 
   return versionNotBumpedError.join('')
 }
