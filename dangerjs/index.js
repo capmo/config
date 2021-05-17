@@ -16,13 +16,7 @@ const { checkForVersionUpdate } = require('./version')
 async function dangerJs ({ platform = 'default', versionValidation = true, sizeLimit = 1000 }) {
   const { title: prTitle, body, assignees } = danger.github.pr
   const { labels: prLabels } = danger.github.issue
-
-    danger.git.diffForFile('package.json').then(diff => {
-      const versionString = `"version": "`;
-      console.log({diff: diff.added.includes(versionString)});
-    });
-
-  const diff  = await danger.git.diffForFile('package.json')
+  const packageJsonDiff = await danger.git.diffForFile('package.json')
 
   const size = await checkPRSize({ sizeLimit })
   const title = checkTitlePrefix({ prTitle })
@@ -30,7 +24,7 @@ async function dangerJs ({ platform = 'default', versionValidation = true, sizeL
   const summary = checkSummary({ body })
   const assignments = checkAssignments({ assignees })
   const labels = checkLabels({ platform, prLabels })
-  const checkVersion = checkForVersionUpdate({ packageJsonDiff: diff, versionValidation })
+  const checkVersion = checkForVersionUpdate({ packageJsonDiff, versionValidation })
 
   const issues = [size, title, url, summary, assignments, labels, checkVersion]
 
