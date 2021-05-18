@@ -17,6 +17,7 @@ async function dangerJs ({ platform = 'default', versionValidation = true, sizeL
   const { title: prTitle, body, assignees } = danger.github.pr
   const { labels: prLabels } = danger.github.issue
   const packageJsonDiff = await danger.git.diffForFile('package.json')
+  const packageLockJsonDiff = await danger.git.diffForFile('package-lock.json')
 
   const size = await checkPRSize({ sizeLimit })
   const title = checkTitlePrefix({ prTitle })
@@ -24,7 +25,7 @@ async function dangerJs ({ platform = 'default', versionValidation = true, sizeL
   const summary = checkSummary({ body })
   const assignments = checkAssignments({ assignees })
   const labels = checkLabels({ platform, prLabels })
-  const checkVersion = checkForVersionUpdate({ packageJsonDiff, versionValidation })
+  const checkVersion = checkForVersionUpdate({ packageJsonDiff, packageLockJsonDiff, versionValidation })
 
   const issues = [size, title, url, summary, assignments, labels, checkVersion]
 
