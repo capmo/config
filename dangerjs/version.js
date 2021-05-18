@@ -23,8 +23,6 @@ function checkForVersionUpdate ({ versionValidation, packageJsonDiff, packageLoc
   const packageLockJsonNewVersion = packageLockJsonDiff.added.match(REGEX_VERSION_QUERY)[0];
 
   if(packageJsonNewVersion !== packageLockJsonNewVersion) return errors.versionMissmatch;
-
-  return;
 }
 
 module.exports = {
