@@ -22,9 +22,9 @@ function checkForVersionUpdate ({ versionValidation, packageJsonDiff, packageLoc
   const packageJsonNewVersion = packageJsonDiff.added.match(REGEX_VERSION_QUERY)[0];
   const packageLockJsonNewVersion = packageLockJsonDiff.added.match(REGEX_VERSION_QUERY)[0];
 
-  if(packageJsonNewVersion === packageLockJsonNewVersion) return;
+  if(packageJsonNewVersion !== packageLockJsonNewVersion) return errors.versionMissmatch;
 
-  return errors.versionMissmatch;
+  return;
 }
 
 module.exports = {
